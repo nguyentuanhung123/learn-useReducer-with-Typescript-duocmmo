@@ -1,5 +1,5 @@
 import { useReducer } from 'react'
-import reducer, { initialState } from '../reducer/reducer';
+import reducer, { init, initialState } from '../reducer/reducer';
 import { decreaseAgeAction, increaseAgeAction, increaseXAgeAction } from '../reducer/actions';
 
 /**
@@ -25,7 +25,9 @@ const Counter = () => {
     //     age: 26
     // })
 
-    const [state, dispatch] = useReducer(reducer, initialState);
+    const [state, dispatch] = useReducer(reducer, initialState, init);
+
+    init(initialState);
     
     const increaseAge = () => {
         // setState((prev) => ({

@@ -15,6 +15,13 @@ const reducer: (state: typeof initialState, action: any) => {
  * 
  */
 
+export const init = (initialArg: typeof initialState) => {
+    return {
+        ...initialArg,
+        age: initialArg.age + 4
+    }
+}
+
 const reducer = (state: typeof initialState, action: ActionType) => {
     // if(action.type === 'INCREASE_AGE'){
     //     return {
