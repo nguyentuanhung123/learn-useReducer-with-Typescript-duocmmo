@@ -1,8 +1,6 @@
 import { useReducer } from 'react'
-
-const initialState = {
-    age: 26
-}
+import reducer, { initialState } from '../reducer/reducer';
+import { decreaseAgeAction, increaseAgeAction, increaseXAgeAction } from '../reducer/actions';
 
 /**
  * 
@@ -20,73 +18,6 @@ const reducer: (state: typeof initialState, action: any) => {
  * Giải pháp : Thêm as { type: 'INCREASE_AGE' }
  */
 
-
-//type ActionType = 'INCREASE_AGE' | 'DECREASE_AGE'
-//type ActionType = { type: 'INCREASE_AGE' } | { type: 'DECREASE_AGE' } | { type: 'INCREASE_XAGE', payload: number }
-type ActionType = IncreaseAgeAction | DecreaseAgeAction | IncreaseXAgeAction
-
-/**
- * Áp dụng code dưới do các code trước lặp lại nhau quá nhiều
- *  
- */
-
-type IncreaseAgeAction = { type: 'INCREASE_AGE' }
-type DecreaseAgeAction = { type: 'DECREASE_AGE' }
-type IncreaseXAgeAction = { type: 'INCREASE_XAGE' }
-
-const increaseAgeAction = () => {
-    return { type: 'INCREASE_AGE' } as { type: 'INCREASE_AGE' }
-}
-
-const decreaseAgeAction = () => {
-    return { type: 'DECREASE_AGE' } as { type: 'DECREASE_AGE' }
-}
-
-const increaseXAgeAction = (value: number) => {
-    return { type: 'INCREASE_XAGE', payload: value } as { type: 'INCREASE_XAGE', payload: number }
-}
-
-const reducer = (state: typeof initialState, action: ActionType) => {
-    // if(action.type === 'INCREASE_AGE'){
-    //     return {
-    //         ...state,
-    //         age: state.age + 1
-    //     }
-    // }
-    // if(action.type === 'DECREASE_AGE'){
-    //     return {
-    //         ...state,
-    //         age: state.age - 1
-    //     }
-    // }
-    // if(action.type === 'INCREASE_XAGE'){
-    //     return {
-    //         ...state,
-    //         age: state.age + action.payload
-    //     }
-    // }
-    // //return state;
-    // throw Error('Invalid Action', action)
-    switch(action.type) {
-        case 'INCREASE_AGE':
-            return {
-                ...state,
-                age: state.age + 1
-            }
-        case 'DECREASE_AGE':
-            return {
-                ...state,
-                age: state.age - 1
-            }
-        case 'INCREASE_XAGE':
-            return {
-                ...state,
-                age: state.age + action.payload
-            }
-        default:
-            throw Error('Invalid Action', action)
-    }
-}
 
 const Counter = () => {
 
