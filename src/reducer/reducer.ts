@@ -64,4 +64,15 @@ const reducer = (state: typeof initialState, action: ActionType) => {
     }
 }
 
+export const log = () => {
+    return (state: typeof initialState, action: ActionType) => {
+        console.group("Action Type: ", action.type);
+        console.log("Previous state: ", state); // {age: 31}
+        const nextState = reducer(state, action)
+        console.log("Next state: ", nextState); // {age: 32}
+        console.groupEnd(); // Phải có cái này khi dùng console.group
+        return nextState
+    }
+}
+
 export default reducer;

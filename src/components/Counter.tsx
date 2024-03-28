@@ -1,5 +1,5 @@
 import { useReducer } from 'react'
-import reducer, { init, initialState } from '../reducer/reducer';
+import reducer, { init, initialState, log } from '../reducer/reducer';
 import { decreaseAgeAction, increaseAgeAction, increaseXAgeAction } from '../reducer/actions';
 
 /**
@@ -25,7 +25,7 @@ const Counter = () => {
     //     age: 26
     // })
 
-    const [state, dispatch] = useReducer(reducer, initialState, init);
+    const [state, dispatch] = useReducer(log(), initialState, init);
 
     /**
      * Tham số thứ 3 là một function
@@ -45,9 +45,8 @@ const Counter = () => {
         /**
          * Lấy giá trị hiện tại sau khi dispatch
          */
-        const nextState = reducer(state, increaseAgeAction())
-        console.log(nextState.age);
-        
+        // const nextState = reducer(state, increaseAgeAction())
+        // console.log(nextState.age);
         
     }
     
