@@ -27,6 +27,10 @@ const Counter = () => {
 
     const [state, dispatch] = useReducer(reducer, initialState, init);
 
+    /**
+     * Tham số thứ 3 là một function
+     * thay thể cho initialState
+     */
     init(initialState);
     
     const increaseAge = () => {
@@ -37,6 +41,14 @@ const Counter = () => {
         //dispatch('INCREASE_AGE');
         //dispatch({ type: 'INCREASE_AGE' });
         dispatch(increaseAgeAction());
+        //console.log(state.age); // 30 not 31 (Browser is 30)
+        /**
+         * Lấy giá trị hiện tại sau khi dispatch
+         */
+        const nextState = reducer(state, increaseAgeAction())
+        console.log(nextState.age);
+        
+        
     }
     
     const decreaseAge = () => {
